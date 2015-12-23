@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="50dp"
+    android:orientation="horizontal"
+    android:gravity="center"
+
+
+    android:background="#ffffff">
+<FrameLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    android:id="@+id/gallerylayout"
+    android:layout_marginTop="2dp">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:id="@+id/gallery"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="1dp"
+        android:background="#ffffff">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="News"
+            android:id="@+id/gallerytextcolor"
+            android:layout_marginTop="1dp"
+            android:textColor="#800000" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:id="@+id/gallery2"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="1dp"
+        android:background="#ffffff"
+        android:visibility="gone">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="News"
+            android:id="@+id/gallerytextgrey"
+            android:layout_marginTop="1dp"
+            android:textColor="#7f8c8d" />
+
+
+    </LinearLayout>
+</FrameLayout>
+    <View
+        android:layout_width="1dp"
+        android:layout_height="20dp"
+        android:background="#ffffff"/>
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:id="@+id/newslayout"
+        android:layout_marginTop="2dp">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:id="@+id/news"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="1dp"
+        android:background="#ffffff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Realty Trends"
+            android:id="@+id/newstextcolor"
+            android:layout_marginTop="1dp"
+            android:textColor="#800000"
+            android:layout_gravity="center"
+            android:gravity="center" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:id="@+id/news2"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="1dp"
+        android:background="#ffffff"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Realty Trends"
+            android:id="@+id/newstextgrey"
+            android:layout_marginTop="1dp"
+            android:textColor="#7f8c8d"
+            android:gravity="center" />
+
+
+    </LinearLayout>
+</FrameLayout>
+    <View
+        android:layout_width="1dp"
+        android:layout_height="20dp"
+        android:background="#ffffff"/>
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:id="@+id/calendarlayout"
+        android:layout_marginTop="2dp">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:id="@+id/calendar"
+        android:gravity="center"
+        android:layout_marginBottom="1dp"
+        android:background="#ffffff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Banking"
+            android:id="@+id/calendartextcolor"
+            android:layout_marginTop="1dp"
+            android:textColor="#800000" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:id="@+id/calendar2"
+        android:gravity="center"
+        android:layout_marginBottom="1dp"
+        android:background="#ffffff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Banking"
+            android:id="@+id/calendartextgrey"
+            android:layout_marginTop="1dp"
+            android:textColor="#7f8c8d" />
+
+
+    </LinearLayout>
+</FrameLayout>
+    <View
+        android:layout_width="1dp"
+        android:layout_height="20dp"
+        android:background="#ffffff"/>
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:id="@+id/surveylayout"
+        android:layout_marginTop="2dp">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:id="@+id/survey"
+        android:orientation="vertical"
+
+        android:gravity="center"
+        android:layout_marginBottom="1dp"
+        android:background="#ffffff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Blog"
+            android:id="@+id/surveytextcolor"
+            android:layout_marginTop="1dp"
+            android:textColor="#800000" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:id="@+id/survey2"
+        android:orientation="vertical"
+
+        android:gravity="center"
+        android:layout_marginBottom="1dp"
+        android:background="#ffffff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Blog"
+            android:id="@+id/surveytextgrey"
+            android:layout_marginTop="1dp"
+            android:textColor="#7f8c8d" />
+
+    </LinearLayout>
+    </FrameLayout>
+    <View
+        android:layout_width="1dp"
+        android:layout_height="20dp"
+        android:background="#ffffff"/>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:id="@+id/morelayout"
+        android:layout_marginTop="2dp">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:id="@+id/more"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="1dp"
+        android:background="#ffffff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Video"
+            android:id="@+id/moretextcolor"
+            android:layout_marginTop="1dp"
+            android:textColor="#800000" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:id="@+id/more2"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="1dp"
+        android:background="#ffffff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Video"
+            android:id="@+id/moretextgrey"
+            android:layout_marginTop="1dp"
+            android:textColor="#7f8c8d" />
+
+    </LinearLayout>
+</FrameLayout>
+    <View
+        android:layout_width="1dp"
+        android:layout_height="20dp"
+        android:background="#ffffff"/>
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:id="@+id/Events"
+        android:layout_marginTop="2dp">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:id="@+id/events"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginBottom="1dp"
+            android:background="#ffffff">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Events"
+                android:id="@+id/eventtextcolor"
+                android:layout_marginTop="1dp"
+                android:textColor="#800000" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:id="@+id/events2"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginBottom="1dp"
+            android:background="#ffffff">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Events"
+                android:id="@+id/eventtextgrey"
+                android:layout_marginTop="1dp"
+                android:textColor="#7f8c8d" />
+
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

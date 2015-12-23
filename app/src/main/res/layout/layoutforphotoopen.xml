@@ -1,0 +1,42 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:geekui="http://schemas.android.com/apk/res-auto"
+    tools:context="com.Apporio.it.fragments.BlankFragment"
+
+    android:id="@+id/ghghj"
+    android:orientation="vertical"
+    android:background="#000">
+    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:layout_marginBottom="5dp"
+        android:scaleType="fitXY" />
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <views.TypefaceTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Caption"
+        geekui:customTypeface="fonts/Time_Roman.ttf"
+        android:id="@+id/caption"
+        android:layout_gravity="center"
+        android:textColor="#ffffff"
+        android:textSize="15dp"
+        android:layout_weight="6"
+        android:gravity="center"
+        android:padding="2dp" />
+    </LinearLayout>
+</ScrollView>
+</LinearLayout>

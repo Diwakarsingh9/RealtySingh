@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="178dp"
+    xmlns:geekui="http://schemas.android.com/tools"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/llforprofile">
+
+        <views.TypefaceTextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:textColor="#000"
+            android:text="Spinno Singh"
+            android:textSize="18dp"
+            geekui:customTypeface="fonts/JosefinSans-Bold.ttf"
+
+            android:layout_marginRight="5dp" />
+
+        <views.TypefaceTextView
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="5dp"
+            android:text="spinno@gmail.com"
+            android:textSize="18dp"
+            geekui:customTypeface="fonts/JosefinSans-Bold.ttf"
+
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp" />
+    </LinearLayout>
+
+    <com.pkmmte.view.CircularImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/reall2"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="35dp"
+        android:id="@+id/circleView"
+        app:civ_border="true"
+        app:civ_borderColor="#c0392b"
+        app:civ_borderWidth="2dp"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+
+        android:background="#c0392b"
+        android:id="@+id/view1111"
+        android:visibility="visible"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>

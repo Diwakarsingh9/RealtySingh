@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="200dp"
+    android:gravity="center"
+    android:orientation="vertical">
+    <android.support.v7.widget.CardView
+
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        app:cardCornerRadius="4dp"
+        android:layout_weight="1"
+        android:background="#ffffff">
+        <LinearLayout
+
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="1dp"
+            android:background="#ffffff">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:id="@+id/img"
+                android:src="@drawable/stub"
+                android:scaleType="fitXY"
+                android:padding="1dp"
+                android:background="@drawable/bgdrwableimg"
+                android:layout_weight="1.5"
+                android:adjustViewBounds="false" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left|center">
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="left|center">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Loading ...."
+                        android:id="@+id/title2234"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:gravity="left|center"
+                        android:textColor="#000"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        android:maxLines="2"
+                        android:layout_weight="1" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:padding="1dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Loading ..."
+                            android:id="@+id/date"
+                            android:gravity="left|center"
+                            android:textColor="#a3000000"
+                            android:textSize="10dp"
+                            android:layout_gravity="center|right"
+                            android:layout_weight="1"
+                            android:maxLines="1" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Loading ...."
+                            android:id="@+id/city"
+                            android:textColor="#c0392b"
+                            android:textSize="12dp"
+                            android:layout_gravity="left|center"
+                            android:maxLines="1" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="Smart City project for sustainable development, with two billion Euro assistance from the French government, has begun in Puducherry with Nagpur and Chandigarh being next in the line,"
+                        android:id="@+id/descp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="left|center"
+                        android:textColor="#b8000000"
+                        android:textSize="12dp"
+                        android:singleLine="false"
+                        android:maxLines="2"
+                        android:minLines="1" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:padding="1dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Loading ....."
+                            android:id="@+id/srce"
+                            android:textColor="#c0392b"
+                            android:textSize="12dp"
+                            android:layout_weight="1"
+                            android:maxLines="1" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Read More"
+                            android:id="@+id/readmore"
+                            android:gravity="center|right"
+                            android:textColor="#2980b9"
+                            android:textSize="12dp"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
