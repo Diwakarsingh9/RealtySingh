@@ -61,5 +61,12 @@
         android:textColor="#000"
         android:textSize="25dp"
         android:textIsSelectable="false" />
-
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pb"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:background="@drawable/progressbar"
+        android:layout_marginTop="20dp" />
 </LinearLayout>

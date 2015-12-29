@@ -41,7 +41,7 @@
                     android:layout_height="match_parent"
                     android:layout_below="@+id/tabs"
                     tools:context=".MainActivity"
-                    android:background="#75d0d2d2" />
+                    android:background="#ffffff" />
 
             </FrameLayout>
         </LinearLayout>

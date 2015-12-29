@@ -77,7 +77,7 @@ public class parsingforforgotpassword {
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(sr2);
-        Signupactivity.pb.setVisibility(View.VISIBLE);
+        ForgotActivity.pb.setVisibility(View.VISIBLE);
 
 
     }

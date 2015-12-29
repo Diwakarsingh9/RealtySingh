@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ripple="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+
+    android:gravity="top|center">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            android:gravity="top|center"
+            android:layout_marginTop="30dp">
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_layout11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintTextAppearance="@style/GreenTextInputLayout">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:id="@+id/name"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="2dp"
+                    android:hint="Name"
+                    android:textColor="#000"
+                    android:textCursorDrawable="@drawable/cursorcolor"
+                    android:textColorHighlight="#ffffff"
+                    android:textColorHint="#5b5b5b"
+                    android:background="@null"
+                    android:textSize="20dp" />
+            </android.support.design.widget.TextInputLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#c0392b"
+                    android:id="@+id/view11"
+                    android:layout_marginBottom="10dp"
+                    android:visibility="visible" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/colorPrimary"
+                    android:id="@+id/view12"
+                    android:layout_marginBottom="10dp"
+                    android:visibility="gone" />
+            </FrameLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_layout22"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintTextAppearance="@style/GreenTextInputLayout">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:id="@+id/email"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="2dp"
+                    android:textColor="#000"
+                    android:textColorHint="#5b5b5b"
+                    android:hint="E-Mail Address"
+                    android:textCursorDrawable="@drawable/cursorcolor"
+                    android:background="@null"
+                    android:textSize="20dp"
+                    android:layout_marginTop="10dp"
+                    android:inputType="textWebEmailAddress" />
+            </android.support.design.widget.TextInputLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#c0392b"
+                    android:id="@+id/view21"
+                    android:layout_marginBottom="20dp"
+                    android:visibility="visible" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/colorPrimary"
+                    android:id="@+id/view22"
+                    android:layout_marginBottom="20dp"
+                    android:visibility="gone" />
+            </FrameLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintTextAppearance="@style/GreenTextInputLayout">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:id="@+id/password"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="2dp"
+                    android:hint="Contact"
+                    android:textColor="#000"
+                    android:textCursorDrawable="@drawable/cursorcolor"
+                    android:textColorHighlight="#ffffff"
+                    android:textColorHint="#5b5b5b"
+                    android:background="@null"
+                    android:textSize="20dp"
+                    android:inputType="number" />
+            </android.support.design.widget.TextInputLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#c0392b"
+                    android:id="@+id/view111"
+                    android:layout_marginBottom="10dp"
+                    android:visibility="visible" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/colorPrimary"
+                    android:id="@+id/view112"
+                    android:layout_marginBottom="10dp"
+                    android:visibility="gone" />
+            </FrameLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_layout33"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintTextAppearance="@style/GreenTextInputLayout">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:id="@+id/mob"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="2dp"
+                    android:textColor="#000"
+                    android:textColorHint="#5b5b5b"
+                    android:hint="Message"
+                    android:textCursorDrawable="@drawable/cursorcolor"
+                    android:background="@null"
+                    android:textSize="20dp"
+                    android:layout_marginTop="10dp" />
+            </android.support.design.widget.TextInputLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#c0392b"
+                    android:id="@+id/view1111111"
+                    android:layout_marginBottom="10dp"
+                    android:visibility="visible" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/colorPrimary"
+                    android:id="@+id/view1121111"
+                    android:layout_marginBottom="10dp"
+                    android:visibility="gone" />
+            </FrameLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+
+                android:layout_marginTop="20dp">
+                <com.andexert.library.RippleView
+                    android:id="@+id/rect22"
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/actionbar2"
+                    android:layout_height="wrap_content"
+                    ripple:rv_type="rectangle"
+                    ripple:rv_rippleDuration="500"
+                    ripple:rv_zoom="true">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="SUBMIT"
+                        android:textSize="20dp"
+                        android:id="@+id/login34"
+                        android:gravity="center"
+                        android:textColor="#000"
+                        android:background="@drawable/buttnbg"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp" />
+                </com.andexert.library.RippleView>
+
+            </LinearLayout>
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar3"
+                android:layout_marginTop="20dp" />
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+</LinearLayout>

@@ -65,7 +65,7 @@ public class ForgotActivity extends Activity {
             Window window = ForgotActivity.this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(ForgotActivity.this.getResources().getColor(R.color.colorPrimaryDark));
+            window.setStatusBarColor(ForgotActivity.this.getResources().getColor(R.color.red));
         } else {
             Window window = ForgotActivity.this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);

@@ -98,7 +98,7 @@ public class ListInneractivity  extends Activity  {
             Window window = ListInneractivity.this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(ListInneractivity.this.getResources().getColor(R.color.colorPrimaryDark));
+            window.setStatusBarColor(ListInneractivity.this.getResources().getColor(R.color.red));
         } else {
             Window window = ListInneractivity.this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);

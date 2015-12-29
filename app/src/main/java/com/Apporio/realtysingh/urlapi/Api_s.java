@@ -19,8 +19,14 @@ public class Api_s {
     public static  String recentnews ="http://meetsingh.com/api/view_news.php?module_id=";
     public static  String recentnews2 ="&category=";
     public static  String photosgallery ="http://meetsingh.com/api/gallery.php?category=";
+    public static  String feedback ="http://meetsingh.com/api/feedback.php?user_id=";
+    public static  String feedback0 ="&name=";
+    public static  String feedback1 ="&email=";
+    public static  String feedback2 ="&contact=";
+    public static  String feedback3 ="&feedback=";
+    public static  String invitefriends ="http://meetsingh.com/api/invite_fr.php?flag=2";
 }
 
 //http://meetsingh.com/realtysingh/api/view_post.php?page_name=
-
+//http://meetsingh.com/api/feedback.php?user_id=&name=&email=&contact=&feedback=
 //http://meetsingh.com/realtysingh/api/view_post.php?state_id=&page_name=

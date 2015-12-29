@@ -9,8 +9,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.view.Display;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -28,8 +30,8 @@ public class SplashActivity extends Activity {
     public static int y2=0;
     public static int y=0;
     public  static String s1="";
-
-
+    public static SplashActivity spl;
+    public static ProgressBar pb;
     public static ArrayList<String> module_id = new ArrayList<String>();
     public static ArrayList<String> moduletilte = new ArrayList<String>();
     public static ArrayList<String> moduledate = new ArrayList<String>();
@@ -43,8 +45,10 @@ public class SplashActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        spl= SplashActivity.this;
+        pb =(ProgressBar)findViewById(R.id.pb);
         parsingforstatenames.parsing(SplashActivity.this);
-        parsingforpages.parsing(SplashActivity.this);
+
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         previouslyStarted = prefs.getBoolean("pref_previously_started", false);
         ScreenResolution screenRes = deviceDimensions();
@@ -86,16 +90,7 @@ public class SplashActivity extends Activity {
             public void run()
 
             {
-                if (!previouslyStarted) {
-                    Intent in = new Intent(SplashActivity.this, Logregactivity.class);
-                    startActivity(in);
-                    finish();
-                }
-                else {
-                    Intent in = new Intent(SplashActivity.this, MainActivity.class);
-                    startActivity(in);
-                    finish();
-                }
+                pb.setVisibility(View.VISIBLE);
 
             }
         }, 4200);

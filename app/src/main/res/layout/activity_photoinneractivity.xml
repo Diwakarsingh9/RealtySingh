@@ -15,8 +15,8 @@
         android:gravity="left|center">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="35dp"
+            android:layout_width="30dp"
+            android:layout_height="25dp"
             android:id="@+id/close"
             android:layout_marginLeft="10dp"
             android:src="@drawable/closewhite"

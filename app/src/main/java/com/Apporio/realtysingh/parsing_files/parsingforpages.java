@@ -53,16 +53,15 @@ public class parsingforpages {
                     pagesnamessettergetter received2 = new pagesnamessettergetter();
                     received2 = gson.fromJson(response, pagesnamessettergetter.class);
 
+                    if(received2.result.equals("1")) {
+                        data_list1 = received2.innerpage;
+                        for (int i = 0; i < data_list1.size(); i++) {
 
-                    data_list1=received2.innerpage;
-                    for(int i=0;i<data_list1.size();i++){
+                            pname.add(data_list1.get(i).page_name);
+                        }
+                        parsingforinvitefriends.parsing(activity);
 
-                        pname.add(data_list1.get(i).page_name);
                     }
-
-
-
-
                 } catch (JsonSyntaxException e) {
                     e.printStackTrace();
                     Log.e("exception", "" + e);

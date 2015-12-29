@@ -114,7 +114,7 @@ public class Loginactivity extends AppCompatActivity {
             Window window = Loginactivity.this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(Loginactivity.this.getResources().getColor(R.color.colorPrimaryDark));
+            window.setStatusBarColor(Loginactivity.this.getResources().getColor(R.color.red));
         } else {
             Window window = Loginactivity.this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);

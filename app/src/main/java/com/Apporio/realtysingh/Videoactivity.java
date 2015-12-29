@@ -166,7 +166,7 @@ public class Videoactivity extends YouTubeBaseActivity implements
             Window window = Videoactivity.this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(Videoactivity.this.getResources().getColor(R.color.colorPrimaryDark));
+            window.setStatusBarColor(Videoactivity.this.getResources().getColor(R.color.red));
         } else {
             Window window = Videoactivity.this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);

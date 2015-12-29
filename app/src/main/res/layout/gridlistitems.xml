@@ -47,61 +47,54 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Loading ...."
         android:textColor="#000"
         android:textSize="12dp"
         android:textStyle="bold"
-        android:maxLines="2"
-        android:minLines="1"
-        android:layout_weight="1" />
-    <TextView
-        android:id="@+id/source"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Loading ....."
-        android:layout_marginTop="5dp"
         android:maxLines="1"
         android:minLines="1"
-        android:textColor="#a61c1e"
-        android:textSize="10dp"
-        android:layout_marginBottom="2dp" />
+        android:layout_weight="1" />
 
-</LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_weight="1"
-            android:gravity="top|right"
-            android:layout_marginRight="5dp">
-
+            android:gravity="top|right">
+            <TextView
+                android:id="@+id/source"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Loading ....."
+                android:layout_marginTop="5dp"
+                android:maxLines="1"
+                android:minLines="1"
+                android:textColor="#a61c1e"
+                android:textSize="10dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:gravity="left|center" />
             <TextView
                 android:id="@+id/date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="Loading ...."
                 android:maxLines="1"
                 android:minLines="1"
                 android:textColor="#a61c1e"
                 android:layout_marginLeft="5dp"
                 android:textSize="10dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:gravity="center|right" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Read More"
-                android:id="@+id/textView"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:textSize="10dp"
-                android:textColor="#228fb3"
-                android:layout_marginBottom="2dp" />
+
 
         </LinearLayout>
+
+</LinearLayout>
+
         </LinearLayout>
 </LinearLayout>
 </LinearLayout>

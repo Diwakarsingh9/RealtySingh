@@ -8,6 +8,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.Apporio.realtysingh.Loginactivity;
+import com.Apporio.realtysingh.settergetter.Loginsettergetter;
+import com.Apporio.realtysingh.settergetter.logginsettergetter2;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -53,8 +56,8 @@ public class parsingforsignup {
                 try {
                     GsonBuilder gsonBuilder = new GsonBuilder();
                     final Gson gson = gsonBuilder.create();
-                    Signupsettergetter received2 = new Signupsettergetter();
-                    received2 = gson.fromJson(response, Signupsettergetter.class);
+                    Loginsettergetter received2 = new Loginsettergetter();
+                    received2 = gson.fromJson(response, Loginsettergetter.class);
 
                     String result1= received2.result;
                     Log.e("resss", "" + result1);
@@ -62,24 +65,58 @@ public class parsingforsignup {
                     String msg1= received2.msg;
                     Toast.makeText(activity, "" + msg1, Toast.LENGTH_SHORT).show();
                     if(result1.equals("1")){
+                        Signupsettergetter received3 = new Signupsettergetter();
+                        received3 = gson.fromJson(response, Signupsettergetter.class);
+                        String name11 =received3.innerlogin.name;
+                        String emailid = received3.innerlogin.email;
+                        String userid = received3.innerlogin.user_id;
 
-                                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
-                                SharedPreferences.Editor edit2 = prefs.edit();
+                        //Toast.makeText(activity, ""+name11, Toast.LENGTH_SHORT).show();
+                        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+                        SharedPreferences.Editor edit2 = prefs.edit();
 
-                                edit2.putBoolean("pref_previously_started", Boolean.TRUE);
-                        edit2.putString("Username", "" + s1);
-                        edit2.putString("email", "" + s2);
+                        edit2.putBoolean("pref_previously_started", Boolean.TRUE);
+                        edit2.putString("Username", "" +name11);
+                        edit2.putString("email", "" + emailid);
+                        edit2.putString("userid", "" + userid);
 
 
-                                edit2.commit();
-                                Intent in = new Intent(activity, MainActivity.class);
-                                activity.startActivity(in);
-                                Signupactivity.signupactivity.finish();
-                                Logregactivity.logct.finish();
+                        edit2.commit();
+                        Intent in = new Intent(activity, MainActivity.class);
+                        activity.startActivity(in);
+                        Signupactivity.signupactivity.finish();
+                        Logregactivity.logct.finish();
 
 
 
                     }
+
+
+                    //////////////////////////////
+
+
+
+                  //  Toast.makeText(activity, "" + msg1, Toast.LENGTH_SHORT).show();
+//                    if(result1.equals("1")){
+//
+//                                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+//                                SharedPreferences.Editor edit2 = prefs.edit();
+//
+//                                edit2.putBoolean("pref_previously_started", Boolean.TRUE);
+//                        edit2.putString("Username", "" + s1);
+//                        edit2.putString("email", "" + s2);
+//                       // String userid = received2.innerlogin.user_id;
+//
+//
+//                                edit2.commit();
+//                                Intent in = new Intent(activity, MainActivity.class);
+//                                activity.startActivity(in);
+//                                Signupactivity.signupactivity.finish();
+//                                Logregactivity.logct.finish();
+//
+//
+//
+//                    }
 
 
 

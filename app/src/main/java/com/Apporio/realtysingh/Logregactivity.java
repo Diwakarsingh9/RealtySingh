@@ -78,7 +78,7 @@ public class Logregactivity extends Activity {
             Window window = Logregactivity.this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(Logregactivity.this.getResources().getColor(R.color.colorPrimaryDark));
+            window.setStatusBarColor(Logregactivity.this.getResources().getColor(R.color.red));
         } else {
             Window window = Logregactivity.this.getWindow();
             //window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);

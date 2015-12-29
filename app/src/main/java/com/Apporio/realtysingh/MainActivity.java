@@ -1,6 +1,7 @@
 package com.Apporio.realtysingh;
 
 import android.annotation.TargetApi;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,9 +10,12 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
+import android.provider.Telephony;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -19,6 +23,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -32,11 +38,20 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.Apporio.realtysingh.R;
+import com.Apporio.realtysingh.parsing_files.parsingforinvitefriends;
+import com.Apporio.realtysingh.parsing_files.parsingfornotification;
 import com.Apporio.realtysingh.parsing_files.parsingforstatenames;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
+import com.loopj.android.http.RequestParams;
+
+import java.io.IOException;
 
 public class MainActivity extends ActionBarActivity  {
 
@@ -66,19 +81,31 @@ public class MainActivity extends ActionBarActivity  {
     public static DrawerLayout Drawer;
     public static MainActivity mainact;
 
-    public static String TITLES[] = {"Home","Help","Log Out"};
+    public static String TITLES[] = {"Home","Invite Friends","Help","Log Out"};
     public static int ICONS[] = {
             R.drawable.home,
-
+            R.drawable.share,
             R.drawable.help,R.drawable.logoutblack};
     ActionBarDrawerToggle mDrawerToggle;                  // Declaring Action Bar Drawer Toggle
 
-    public static Button cancel2;
+
 
     View layout, layout2;
     public static TextView text, textforschedule, cancel, confirm, text22, cabtype, couponsavailable;
     Typeface font;
     Bitmap bitmap1;
+    ProgressDialog prgDialog;
+    RequestParams params = new RequestParams();
+    GoogleCloudMessaging gcmObj;
+    Context applicationContext;
+    String regId = "";
+    SharedPreferences prefs2;
+    private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
+
+    AsyncTask<Void, Void, String> createRegIdTask;
+    public static Boolean previouslyStarted22=false;
+    public static final String REG_ID = "regId";
+    public static final String EMAIL_ID = "eMailId";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,8 +125,12 @@ public class MainActivity extends ActionBarActivity  {
 //        setSupportActionBar(toolbar);
         ctc = getApplicationContext();
         mainact = MainActivity.this;
+        Notificationclass.activityopen= true;
+         prefs2 = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        previouslyStarted22 = prefs2.getBoolean("pref_previously_started22", false);
         bitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.reall2);
-        mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView); // Assigning the RecyclerView Object to the xml View
+        mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView);
+        applicationContext = getApplicationContext();// Assigning the RecyclerView Object to the xml View
 
         mRecyclerView.setHasFixedSize(true);                            // Letting the system know that the list objects are of fixed size
 
@@ -112,7 +143,7 @@ public class MainActivity extends ActionBarActivity  {
         mLayoutManager = new LinearLayoutManager(this);                 // Creating a layout Manager
 
         mRecyclerView.setLayoutManager(mLayoutManager);                 // Setting the layout Manager
-
+        checkPlayServices();
         Drawer = (DrawerLayout) findViewById(R.id.DrawerLayout);        // Drawer object Assigned to the view
         mDrawerToggle = new ActionBarDrawerToggle(MainActivity.this, Drawer, toolbar,R.string.openDrawer, R.string.closeDrawer) {
 
@@ -155,11 +186,99 @@ public class MainActivity extends ActionBarActivity  {
         //gps= new GPStracker(ctc);
 
     }
+    private void registerInBackground(final String emailID) {
+        new AsyncTask<Void, Void, String>() {
+            @Override
+            protected String doInBackground(Void... params) {
+                String msg = "";
+                try {
+                    if (gcmObj == null) {
+                        gcmObj = GoogleCloudMessaging
+                                .getInstance(applicationContext);
+                    }
+                    regId = gcmObj
+                            .register(ApplicationConstants.GOOGLE_PROJ_ID);
+                    msg = "Registration ID :" + regId;
+
+                } catch (IOException ex) {
+                    msg = "Error :" + ex.getMessage();
+                }
+                return msg;
+            }
+
+            @Override
+            protected void onPostExecute(String msg) {
+                if (!TextUtils.isEmpty(regId)) {
+                    storeRegIdinSharedPref(applicationContext, regId, emailID);
+
+                } else {
+                    Toast.makeText(MainActivity.this, "Please check your internet connection .....", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        }.execute(null, null, null);
+    }
+
+    private void storeRegIdinSharedPref(Context context, String regId,
+                                        String emailID) {
+        SharedPreferences prefs = getSharedPreferences("UserDetails",
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(REG_ID, regId);
+        editor.putString(EMAIL_ID, emailID);
+        editor.commit();
+        storeRegIdinServer();
+
+    }
+
+    private void storeRegIdinServer() {
+        String android_id = Settings.Secure.getString(MainActivity.this.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+        TelephonyManager mngr = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+        String dd = mngr.getDeviceId();
+
+
+        if (!previouslyStarted22) {
+            parsingfornotification.parsing(MainActivity.this, prefs2.getString("userid", null),regId);
+        }
+        else if (previouslyStarted22) {
+            //
+        }
+        // parsingfornotification.parsing(MainActivity.this,regId,dd);
+
+    }
+
+    private boolean checkPlayServices() {
+        int resultCode = GooglePlayServicesUtil
+                .isGooglePlayServicesAvailable(this);
+        if (resultCode != ConnectionResult.SUCCESS) {
+            if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
+                GooglePlayServicesUtil.getErrorDialog(resultCode, this,
+                        PLAY_SERVICES_RESOLUTION_REQUEST).show();
+            } else {
+//                Toast.makeText(
+//                        applicationContext,
+//                        "This device doesn't support Play services, App will not get notifications",
+//                        Toast.LENGTH_LONG).show();
+                finish();
+            }
+            return false;
+        } else {
+            registerInBackground("realtysingh");
+//            Toast.makeText(
+//                    applicationContext,
+//                    "This device supports Play services, App will work normally",
+//                    Toast.LENGTH_LONG).show();
+        }
+        return true;
+    }
+
 
     @Override
     public void onResume() {
 
         super.onResume();
+        Notificationclass.activityopen= true;
         mAdapter = new MyAdapter(MainActivity.this, TITLES, ICONS, NAME, EMAIL, PROFILE);       // Creating the Adapter of MyAdapter class(which we are going to see in a bit)
 
         mRecyclerView.setAdapter(mAdapter);
@@ -175,6 +294,7 @@ public class MainActivity extends ActionBarActivity  {
     public void onDestroy() {
         super.onDestroy();
         SplashActivity.s1="";
+        Notificationclass.activityopen= false;
 //
     }
 
@@ -224,7 +344,7 @@ public class MainActivity extends ActionBarActivity  {
             Window window = MainActivity.this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(MainActivity.this.getResources().getColor(R.color.colorPrimaryDark));
+            window.setStatusBarColor(MainActivity.this.getResources().getColor(R.color.red));
         } else {
             Window window = MainActivity.this.getWindow();
             //window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -317,15 +437,31 @@ public class MainActivity extends ActionBarActivity  {
 //                    Intent in = new Intent(ctc2, Aboutactivity.class);
 //                    ctc2.startActivity(in);
                     } else if (mNavTitles[getPosition() - 1].equals("Help")) {
-                        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                                "mailto", "abc@gmail.com", null));
-                        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Query Regarding RealitySingh");
-                        emailIntent.putExtra(Intent.EXTRA_TEXT, "Body");
-                        startActivity(Intent.createChooser(emailIntent, "Send email..."));
+                        fragment = new Helpfragment();
+                        if (fragment != null) {
+                            SplashActivity.s1="";
 
-                        emailIntent.setType("text/plain");
+                            FragmentManager fragmentManager = getSupportFragmentManager();
+                            fragmentManager.beginTransaction().replace(R.id.container3, fragment).commit();
+
+                            Drawer.closeDrawer(Gravity.LEFT);
+
+                        } else {
+                            Log.e("MainActivity", "Error in creating fragment");
+                        }
+//                        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+//                                "mailto", "abc@gmail.com", null));
+//                        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Query Regarding RealitySingh");
+//                        emailIntent.putExtra(Intent.EXTRA_TEXT, "Body");
+//                        startActivity(Intent.createChooser(emailIntent, "Send email..."));
+//
+//                        emailIntent.setType("text/plain");
 
 
+
+                    }
+                    else if (mNavTitles[getPosition() - 1].equals("Invite Friends")) {
+                        sendSMS();
 
                     }
                     else if (mNavTitles[getPosition() - 1].equals("Log Out")) {
@@ -448,7 +584,31 @@ public class MainActivity extends ActionBarActivity  {
         super.onPostResume();
 
     }
+    private void sendSMS() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) // At least KitKat
+        {
+            String defaultSmsPackageName = Telephony.Sms.getDefaultSmsPackage(this); // Need to change the build to API 19
 
+            Intent sendIntent = new Intent(Intent.ACTION_SEND);
+            sendIntent.setType("text/plain");
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "Check out Realty Singh for your smartphone. Download it today from "+parsingforinvitefriends.msg1);
+
+            if (defaultSmsPackageName != null)// Can be null in case that there is no default, then the user would be able to choose
+            // any app that support this intent.
+            {
+                sendIntent.setPackage(defaultSmsPackageName);
+            }
+            startActivity(sendIntent);
+
+        }
+        else // For early versions, do what worked for you before.
+        {
+            Intent smsIntent = new Intent(android.content.Intent.ACTION_VIEW);
+            smsIntent.setType("vnd.android-dir/mms-sms");
+            smsIntent.putExtra("sms_body","Check out Realty Singh for your smartphone. Download it today from "+parsingforinvitefriends.msg1);
+            startActivity(smsIntent);
+        }
+    }
 
 }
 

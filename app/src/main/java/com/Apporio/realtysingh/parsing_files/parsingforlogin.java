@@ -66,6 +66,7 @@ public class parsingforlogin {
                         received3 = gson.fromJson(response, logginsettergetter2.class);
                         String name11 =received3.innerlogin.name;
                         String emailid = received3.innerlogin.email;
+                        String userid = received3.innerlogin.user_id;
 
                        //Toast.makeText(activity, ""+name11, Toast.LENGTH_SHORT).show();
                         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
@@ -74,6 +75,7 @@ public class parsingforlogin {
                         edit2.putBoolean("pref_previously_started", Boolean.TRUE);
                         edit2.putString("Username", "" +name11);
                         edit2.putString("email", "" + emailid);
+                        edit2.putString("userid", "" + userid);
 
 
                         edit2.commit();
