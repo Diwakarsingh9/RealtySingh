@@ -28,7 +28,11 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -47,6 +51,7 @@ public class parsingforrecent {
     public static ArrayList<String> moduleinnertitle = new ArrayList<String>();
     public static ArrayList<String> moduleet = new ArrayList<String>();
     public static ArrayList<String> modulesrc = new ArrayList<String>();
+    public static ArrayList<String> modulesrclink = new ArrayList<String>();
     public static Context ctc;
     public static String s22;
 
@@ -77,6 +82,7 @@ public class parsingforrecent {
                     moduleinnertitle.clear();
                     moduleet.clear();
                     modulesrc.clear();
+                    modulesrclink.clear();
                     ListInneractivity.pb.setVisibility(View.GONE);
                     ListInneractivity.llforlist.setVisibility(View.VISIBLE);
 
@@ -105,6 +111,7 @@ public class parsingforrecent {
                                 moduleet.add(data_list1.get(i).module_state);
                                 modulesrc.add(data_list1.get(i).module_source);
                                 moduleinnertitle.add(data_list1.get(i).module_excerpt);
+                                modulesrclink.add(data_list1.get(i).source_link);
                             }
 
                             //Log.e("title", SplashActivity.moduletilte + "");
@@ -172,9 +179,10 @@ public class parsingforrecent {
             in.putExtra("date", moduledate.get(position));
             in.putExtra("descp", moduledescp.get(position));
             in.putExtra("img", moduleimg.get(position));
-            in.putExtra("src", modulesrc.get(position));
-            in.putExtra("plc", moduleet.get(position));
+            in.putExtra("src", moduleet.get(position) );
+            in.putExtra("plc",modulesrc.get(position));
             in.putExtra("id", module_id.get(position));
+            in.putExtra("src_link",modulesrclink.get(position));
            // Toast.makeText(ctc, ""+s22+module_id.get(position), Toast.LENGTH_SHORT).show();
             ctc.startActivity(in);
             ListInneractivity.lis.finish();
@@ -182,13 +190,24 @@ public class parsingforrecent {
         }
     });
         title11.setText(""+ Html.fromHtml("" + moduletilte.get(i)).toString());
-        date.setText(""+moduledate.get(i));
+        SimpleDateFormat inputFormat = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MMM/yyyy");
+        String inputDateStr=""+moduledate.get(i);
+        Date dateaa = null;
+        try {
+            dateaa = inputFormat.parse(inputDateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        String outputDateStr = outputFormat.format(dateaa);
+        date.setText("" + outputDateStr);
+       // date.setText(""+moduledate.get(i));
        descp.setText(""+Html.fromHtml("" + moduledescp.get(i)).toString());
        city.setText(""+moduleet.get(i));
         source1.setText(""+modulesrc.get(i));
         //il.DisplayImage("http://keshavgoyal.com/realtysingh/" + img.get(i), viewHolder.img);
         Picasso.with(ctc)
-                .load("http://keshavgoyal.com/realtysingh/" + moduleimg.get(i))
+                .load("http://meetsingh.com/" + moduleimg.get(i))
                 .placeholder(R.drawable.stub) // optional
                 .error(R.drawable.stub)         // optional
                 .into(img);

@@ -13,7 +13,11 @@ import android.widget.LinearLayout;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 import com.Apporio.realtysingh.Videoactivity;
@@ -101,7 +105,19 @@ public class Videoadapter extends BaseAdapter {
 
 
         holder.title11.setText("" + Html.fromHtml("" + title11.get(position)).toString());
-        holder.date.setText("" + date.get(position));
+        SimpleDateFormat inputFormat = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MMM/yyyy");
+        String inputDateStr=""+date.get(position);
+        Date dateaa = null;
+        String outputDateStr = "";
+        try {
+            dateaa = inputFormat.parse(inputDateStr);
+             outputDateStr = outputFormat.format(dateaa);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        holder. date.setText("" + outputDateStr);
         // holder.descp.setText("" + Html.fromHtml("" + dscvp.get(position)).toString());
         holder.city.setText("" + source2.get(position));
         holder.source1.setText("" + city2.get(position));

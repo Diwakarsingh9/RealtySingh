@@ -15,7 +15,11 @@ package com.Apporio.realtysingh.adapter;
         import com.Apporio.realtysingh.R;
         import com.squareup.picasso.Picasso;
 
+        import java.text.DateFormat;
+        import java.text.ParseException;
+        import java.text.SimpleDateFormat;
         import java.util.ArrayList;
+        import java.util.Date;
 
 /**
  * Created by gaurav on 11/21/2015.
@@ -89,7 +93,19 @@ public class Eventadapter extends BaseAdapter {
         holder.tvSource.setText(Source.get(position));
 
         holder.tvDate = (TextView)convertView.findViewById(R.id.date);
-        holder.tvDate.setText(Date.get(position));
+        SimpleDateFormat inputFormat = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MMM/yyyy");
+        String inputDateStr=""+Date.get(position);
+        java.util.Date dateaa = null;
+        String outputDateStr="";
+        try {
+            dateaa = inputFormat.parse(inputDateStr);
+             outputDateStr = outputFormat.format(dateaa);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        holder. tvDate.setText("" + outputDateStr);
 
         holder.image = (ImageView)convertView.findViewById(R.id.bannerimage);
         Picasso.with(ctc)
@@ -109,13 +125,14 @@ public class Eventadapter extends BaseAdapter {
                 in.putExtra("date", Date.get(pos));
                 in.putExtra("descp", descp.get(pos));
                 in.putExtra("img", images.get(pos));
-                in.putExtra("src", Source.get(pos));
-                in.putExtra("plc", et.get(pos));
+                in.putExtra("src",et .get(pos));
+                in.putExtra("plc", Source.get(pos));
                 in.putExtra("src_link",src_link.get(pos));
                 in.putExtra("id", Eventsfragment.module_id.get(pos));
                 ctc.startActivity(in);
 
-
+//                in.putExtra("src", source2.get(pos));
+//                in.putExtra("plc", city2.get(pos));
             }
         });
         return convertView;

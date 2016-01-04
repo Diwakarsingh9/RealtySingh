@@ -24,6 +24,10 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Videoactivity extends YouTubeBaseActivity implements
         YouTubePlayer.OnInitializedListener {
     public static TextView headl, date11, title, descp, src, plc, relatedsearch;
@@ -92,7 +96,20 @@ public class Videoactivity extends YouTubeBaseActivity implements
         headl.setText("" + Html.fromHtml("" + head).toString());
         String des = Html.fromHtml("" + dsecp).toString();
         descp.setText(des);
-        date11.setText("" + date1);
+        SimpleDateFormat inputFormat = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MMM/yyyy");
+        String inputDateStr=""+date1;
+        Date dateaa = null;
+        String outputDateStr="";
+        try {
+            dateaa = inputFormat.parse(inputDateStr);
+            outputDateStr = outputFormat.format(dateaa);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+  date11.setText("" + outputDateStr);
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -169,7 +186,7 @@ public class Videoactivity extends YouTubeBaseActivity implements
             window.setStatusBarColor(Videoactivity.this.getResources().getColor(R.color.red));
         } else {
             Window window = Videoactivity.this.getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+          //  window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
     }

@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -18,6 +19,11 @@ import android.widget.TextView;
 import com.Apporio.realtysingh.imageloading.ImageLoader;
 import com.Apporio.realtysingh.parsing_files.parsingforrecent;
 import com.Apporio.realtysingh.R;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ListInneractivity  extends Activity  {
    public static TextView headl,date11,title,descp,src,plc,relatedsearch;
@@ -64,15 +70,25 @@ public class ListInneractivity  extends Activity  {
         relatedsearch.setText("Related " + s);
 
         parsingforrecent.parsing(ListInneractivity.this, id1, s);
-
-        il.DisplayImage("http://keshavgoyal.com/realtysingh/" + img, dp);
+        Log.e("foto",""+img);
+        il.DisplayImage("http://meetsingh.com/" + img, dp);
         title.setText("" + s.toUpperCase());
         src.setText("" + getIntent().getExtras().getString("src"));
         plc.setText("" +  getIntent().getExtras().getString("plc"));
         headl.setText("" + Html.fromHtml(""+head).toString());
       String des =  Html.fromHtml(""+dsecp).toString();
         descp.setText(des);
-        date11.setText("" + date1);
+        SimpleDateFormat inputFormat = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MMM/yyyy");
+        String inputDateStr=""+date1;
+        Date date = null;
+        try {
+            date = inputFormat.parse(inputDateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        String outputDateStr = outputFormat.format(date);
+        date11.setText("" + outputDateStr);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +101,10 @@ public class ListInneractivity  extends Activity  {
             public void onClick(View v) {
                 if (!url.startsWith("http://") && !url.startsWith("https://")) {
                     url = "http://" + url;
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(""+url));
+                    startActivity(browserIntent);
+                }
+                else{
                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(""+url));
                     startActivity(browserIntent);
                 }
@@ -101,10 +121,12 @@ public class ListInneractivity  extends Activity  {
             window.setStatusBarColor(ListInneractivity.this.getResources().getColor(R.color.red));
         } else {
             Window window = ListInneractivity.this.getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            //window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
     }
 
 
 }
+
+

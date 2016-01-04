@@ -13,7 +13,11 @@ import android.widget.LinearLayout;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 import com.Apporio.realtysingh.Newsfragment;
@@ -126,7 +130,20 @@ public class Realtytrendsadapter extends BaseAdapter {
                 holder.descp = (TextView) convertView.findViewById(R.id.descp);
                 holder.img = (ImageView) convertView.findViewById(R.id.img);
                 holder.title11.setText("" + Html.fromHtml("" + title11.get(position)).toString());
-                holder.date.setText("" + date.get(position));
+                SimpleDateFormat inputFormat = new SimpleDateFormat("MM/dd/yyyy");
+                SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MMM/yyyy");
+                String inputDateStr=""+date.get(position);
+                Date dateaa = null;
+                String outputDateStr="";
+                try {
+                    dateaa = inputFormat.parse(inputDateStr);
+                    outputDateStr = outputFormat.format(dateaa);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                holder. date.setText("" + outputDateStr);
+                holder. date.setText("" + outputDateStr);
                 holder.descp.setText("" + Html.fromHtml("" + dscvp.get(position)).toString());
                 holder.city.setText("" + source2.get(position));
                 holder.source1.setText("" + city2.get(position));
@@ -171,7 +188,20 @@ public class Realtytrendsadapter extends BaseAdapter {
                 holder.descp = (TextView) convertView.findViewById(R.id.descp);
                 holder.img = (ImageView) convertView.findViewById(R.id.img);
                 holder.title11.setText("" + Html.fromHtml("" + title11.get(position-1)).toString());
-                holder.date.setText("" + date.get(position-1));
+                SimpleDateFormat inputFormat = new SimpleDateFormat("MM/dd/yyyy");
+                SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MMM/yyyy");
+                String inputDateStr=""+date.get(position-1);
+                Date dateaa = null;
+                String outputDateStr="";
+                try {
+                    dateaa = inputFormat.parse(inputDateStr);
+                    outputDateStr = outputFormat.format(dateaa);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                holder. date.setText("" + outputDateStr);
+                holder. date.setText("" + outputDateStr);
                 holder.descp.setText("" + Html.fromHtml("" + dscvp.get(position-1)).toString());
                 holder.city.setText("" + source2.get(position-1));
                 holder.source1.setText("" + city2.get(position - 1));
