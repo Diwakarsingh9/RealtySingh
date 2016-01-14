@@ -20,13 +20,15 @@ import android.widget.Toast;
 import com.Apporio.realtysingh.parsing_files.parsingforfeedback;
 import com.Apporio.realtysingh.singleton.VolleySingleton;
 
+import views.ProgressWheel;
+
 /**
  * Created by saifi45 on 12/24/2015.
  */
 public class Helpfragment extends Fragment {
 public static EditText username, contacts, emails, feedback;
     public static TextView submit;
-    public static ProgressBar pb;
+    public static ProgressWheel pb;
     SharedPreferences prefs;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -36,7 +38,7 @@ public static EditText username, contacts, emails, feedback;
         contacts = (EditText)root.findViewById(R.id.password);
         feedback = (EditText)root.findViewById(R.id.mob);
         submit = (TextView)root.findViewById(R.id.login34);
-        pb = (ProgressBar)root.findViewById(R.id.progressBar3);
+        pb = (ProgressWheel)root.findViewById(R.id.progressBar3);
       prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
 

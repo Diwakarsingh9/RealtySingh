@@ -35,6 +35,8 @@ import com.google.gson.JsonSyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
+import views.ProgressWheel;
+
 
 public class Blogfragment extends Fragment {
     public static String s1="";
@@ -47,7 +49,7 @@ public class Blogfragment extends Fragment {
     public  static NewsAdapter adp;
     public  static ListView lv;
     public static String pos;
-    public static ProgressBar pb;
+    public static ProgressWheel pb;
     public static RequestQueue queue;
     public static StringRequest sr1,sr2;
     public static List<Innerpagefraglist> data_list1;
@@ -68,7 +70,7 @@ public class Blogfragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_blog, null);
         lv=(ListView)root.findViewById(R.id.listView22);
-        pb=(ProgressBar)root.findViewById(R.id.pb);
+        pb=(ProgressWheel)root.findViewById(R.id.pb);
         mSwipeRefreshLayout = (SwipeRefreshLayout) root.findViewById(R.id.activity_main_swipe_refresh_layout);
         queue = VolleySingleton.getInstance(getActivity()).getRequestQueue();
         pos=getArguments().getString("msg22");

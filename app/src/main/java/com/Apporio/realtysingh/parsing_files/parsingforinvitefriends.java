@@ -38,7 +38,7 @@ public class parsingforinvitefriends {
     public static String msg1;
     public static boolean previouslyStarted;
     public static void parsing(final Context activity){
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
         previouslyStarted = prefs.getBoolean("pref_previously_started", false);
 
         String locationurl2 = Api_s.invitefriends;
@@ -63,6 +63,7 @@ public class parsingforinvitefriends {
                     Log.e("resss", "" + result1);
 
                      msg1= received2.url;
+
                     //Toast.makeText(activity, "" + msg1, Toast.LENGTH_SHORT).show();
                     if(result1.equals("1")) {
                         SplashActivity.pb.setVisibility(View.GONE);
@@ -70,6 +71,7 @@ public class parsingforinvitefriends {
                             Intent in = new Intent(activity, Logregactivity.class);
                             activity.startActivity(in);
                             SplashActivity.spl.finish();
+
                         } else {
                             Intent in = new Intent(activity, MainActivity.class);
                             activity.startActivity(in);

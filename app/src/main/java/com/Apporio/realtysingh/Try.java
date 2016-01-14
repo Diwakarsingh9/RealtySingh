@@ -26,10 +26,12 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import views.ProgressWheel;
+
 
 public class Try extends Activity {
 
-ProgressBar pb;
+    ProgressWheel pb;
     TextView txt;
 
     @Override
@@ -38,7 +40,7 @@ ProgressBar pb;
 
         setContentView(R.layout.activity_try);
             Videoactivity.lis.finish();
-        pb=(ProgressBar)findViewById(R.id.progressBar2);
+        pb=(ProgressWheel)findViewById(R.id.progressBar2);
         txt=(TextView)findViewById(R.id.textvvvvvvvv);
         Bundle bundle = getIntent().getExtras();
         final String s = bundle.getString("title", null);
