@@ -2,11 +2,13 @@ package com.Apporio.realtysingh;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -51,13 +53,19 @@ public class ForgotActivity extends Activity {
             @Override
             public void onClick(View v) {
                 parsingforforgotpassword.parsing(ForgotActivity.this, email.getText().toString().trim());
-
+                View view = ForgotActivity.this.getCurrentFocus();
+                if (view != null) {
+                    InputMethodManager imm = (InputMethodManager)ForgotActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                }
 
             }
 
 
         });
     }
+
+
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void setStatusBarColor(){
 
@@ -68,9 +76,23 @@ public class ForgotActivity extends Activity {
             window.setStatusBarColor(ForgotActivity.this.getResources().getColor(R.color.red));
         } else {
             Window window = ForgotActivity.this.getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+          //  window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        email.postDelayed(
+                new Runnable() {
+                    public void run() {
+                        email.requestFocus();
+                        InputMethodManager inputMethodManager =  (InputMethodManager)ForgotActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                        inputMethodManager.showSoftInput(email,InputMethodManager.SHOW_IMPLICIT);
+                    }
+                },100);
+        super.onResume();
     }
 }
 

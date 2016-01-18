@@ -2,11 +2,13 @@ package com.Apporio.realtysingh;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -128,6 +130,12 @@ public class Signupactivity extends Activity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                View view = Signupactivity.this.getCurrentFocus();
+                if (view != null) {
+                    InputMethodManager imm = (InputMethodManager)Signupactivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                }
+
                 parsingforsignup.parsing(Signupactivity.this, name.getText().toString().trim(), email.getText().toString().trim(), pass.getText().toString().trim(), mob.getText().toString().trim(),companyname.getText().toString(),
                         sp.getSelectedItem().toString());
                // Toast.makeText(getApplicationContext(), "Signing Up...", Toast.LENGTH_SHORT).show();
@@ -149,5 +157,19 @@ public class Signupactivity extends Activity {
            // window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        email.postDelayed(
+                new Runnable() {
+                    public void run() {
+                        email.requestFocus();
+                        InputMethodManager inputMethodManager =  (InputMethodManager)Signupactivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                        inputMethodManager.showSoftInput(email,InputMethodManager.SHOW_IMPLICIT);
+                    }
+                },100);
+        super.onResume();
     }
 }

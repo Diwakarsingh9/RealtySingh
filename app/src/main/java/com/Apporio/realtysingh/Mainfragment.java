@@ -1,5 +1,6 @@
 package com.Apporio.realtysingh;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
@@ -206,6 +208,11 @@ public class Mainfragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        View view = getActivity().getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
 //        Toast.makeText(getActivity(), "chlafragres", Toast.LENGTH_SHORT).show();
         // mainfragmentwork();
     }
@@ -262,6 +269,8 @@ public class Mainfragment extends Fragment {
 
 
     }
+
+
 }
 
 

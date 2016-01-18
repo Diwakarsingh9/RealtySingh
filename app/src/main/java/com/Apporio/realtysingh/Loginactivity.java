@@ -1,6 +1,7 @@
 package com.Apporio.realtysingh;
 
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -81,6 +83,12 @@ public class Loginactivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                View view = Loginactivity.this.getCurrentFocus();
+                if (view != null) {
+                    InputMethodManager imm = (InputMethodManager)Loginactivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                }
+
                 parsingforlogin.parsing(Loginactivity.this,email.getText().toString().trim(),zip.getText().toString().trim());
 //                Toast.makeText(getApplicationContext(), "Login Successfully...", Toast.LENGTH_SHORT).show();
 //                Handler handler1 = new Handler();
@@ -120,5 +128,18 @@ public class Loginactivity extends AppCompatActivity {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        email.postDelayed(
+                new Runnable() {
+                    public void run() {
+                        email.requestFocus();
+                        InputMethodManager inputMethodManager =  (InputMethodManager)Loginactivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                        inputMethodManager.showSoftInput(email,InputMethodManager.SHOW_IMPLICIT);
+                    }
+                },100);
+        super.onResume();
     }
 }
